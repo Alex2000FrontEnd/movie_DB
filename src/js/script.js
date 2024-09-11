@@ -24,3 +24,25 @@ const movieDB = {
     ]
 };
 
+// 1) удаление рекламных блоков
+document.querySelectorAll('.promo__adv img').forEach(img => img.remove());
+
+// 2) изменение жанра
+document.querySelector('.promo__genre').textContent = 'драма';
+
+// 3) изменение постера
+document.querySelector('.promo__bg').style.backgroundImage = 'url("img/bg.jpg")';
+
+// 4, 5) формирование списка фильмов
+let listFilms = '';
+
+movieDB.movies.sort();
+movieDB.movies.forEach((film, i) => {
+    listFilms += `
+        <li class="promo__interactive-item">${i + 1}) ${film}
+            <div class="delete"></div>
+        </li>
+    `;
+});
+
+document.querySelector('.promo__interactive-list').innerHTML = listFilms;
